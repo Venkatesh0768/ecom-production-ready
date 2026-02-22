@@ -1,3 +1,16 @@
 spring:
   application:
     name: ecom-backend
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ecom-db
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+server:
+  port: 5000
