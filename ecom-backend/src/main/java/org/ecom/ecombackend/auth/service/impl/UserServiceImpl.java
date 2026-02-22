@@ -8,6 +8,8 @@ import org.ecom.ecombackend.auth.repositories.UserRepository;
 import org.ecom.ecombackend.auth.service.UserService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -30,5 +32,10 @@ public class UserServiceImpl implements UserService {
                 .email(savedUser.getEmail())
                 .password(savedUser.getPassword())
                 .build();
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 }

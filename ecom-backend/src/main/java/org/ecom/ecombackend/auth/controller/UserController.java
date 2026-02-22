@@ -1,14 +1,15 @@
 package org.ecom.ecombackend.auth.controller;
 
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.ecom.ecombackend.auth.dto.UserRequestDto;
 import org.ecom.ecombackend.auth.dto.UserResponseDto;
+import org.ecom.ecombackend.auth.model.User;
 import org.ecom.ecombackend.auth.service.UserService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,6 +21,12 @@ public class UserController {
     @PostMapping
     public ResponseEntity<UserResponseDto> createUser(@RequestBody UserRequestDto requestDto) {
         UserResponseDto response = userService.createUser(requestDto);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<User>> getAllUsers(){
+        List<User> response = userService.getAllUsers();
         return ResponseEntity.ok(response);
     }
 }
