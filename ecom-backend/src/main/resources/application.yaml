@@ -3,9 +3,9 @@ spring:
     name: ecom-backend
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/ecom-db
-    username: postgres
-    password: password
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -14,3 +14,4 @@ spring:
 
 server:
   port: 5000
+

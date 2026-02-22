@@ -1,20 +1,20 @@
+# Stage 1: Build
 FROM eclipse-temurin:21-jdk AS builder
 
 WORKDIR /app
 
 COPY mvnw .
-
 COPY .mvn .mvn
-
 COPY pom.xml .
 
 RUN chmod +x mvnw && ./mvnw dependency:go-offline -B
 
-COPY src src
+COPY src ./src
 
 RUN ./mvnw clean package -DskipTests -B
 
-#stage 2 distroless
+
+# Stage 2: Runtime (Distroless)
 FROM gcr.io/distroless/java21-debian12
 
 WORKDIR /app
@@ -23,4 +23,4 @@ COPY --from=builder /app/target/*.jar app.jar
 
 EXPOSE 5000
 
-CMD ["app.jar"]
+ENTRYPOINT ["java","-jar","app.jar"]
