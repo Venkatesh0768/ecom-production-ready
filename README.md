@@ -1,4 +1,4 @@
-# 🛒 Ecommerce — Production Ready
+# Ecommerce — Production Ready
 
 > A fully production-grade ecommerce platform with automated CI/CD pipeline and containerized deployment.
 
