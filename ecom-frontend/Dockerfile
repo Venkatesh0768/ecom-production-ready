@@ -15,7 +15,6 @@ RUN corepack enable && corepack prepare pnpm@10.22.0 --activate
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-COPY .env.build ./.env
 RUN CI=true pnpm install --frozen-lockfile
 ENV NODE_ENV=production
 RUN pnpm build
